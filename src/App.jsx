@@ -4,9 +4,11 @@ import { api } from "../convex/_generated/api";
 import Header from './Header';
 import Footer from './Footer';
 import ProgramList from './ProgramList';
+import ReviewsForm from "./ReviewsForm";
 import SchoolsList from "./SchoolsList";
 
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+// Import Routes and Route from react-router-dom (Switch is replaced by Routes)
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const tasks = useQuery(api.tasks.get);
@@ -17,17 +19,14 @@ function App() {
       <div className="App">
         <Header />
         <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <SchoolsList />
-            </Route>
-            <Route path="/programs">
-              <ProgramList />
-            </Route>
-            <Route path="/reviews">
-              <div>Reviews Page Under Construction</div>
-            </Route>
-          </Switch>
+          {/* Replace Switch with Routes */}
+          <Routes>
+            {/* Update Route components with the new element prop */}
+            <Route exact path="/" element={<SchoolsList />} />
+            <Route path="/programs" element={<ProgramList />} />
+            <Route path="/reviews" element={<div>Reviews Page Under Construction</div>} />
+            <Route path="/add-review" element={<ReviewsForm />} />
+          </Routes>
         </div>
         <Footer />
       </div>

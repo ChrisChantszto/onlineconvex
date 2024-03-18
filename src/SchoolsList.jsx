@@ -1,28 +1,23 @@
-import "./App.css";
+import React from "react";
 import { useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
+import "./SchoolsList.css"; 
 
 function SchoolsList() {
   const schools = useQuery(api.schools.get);
   console.log(schools);
+
   return (
-    <div className="App">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>location</th>
-          </tr>
-        </thead>
-        <tbody>
-          {schools && schools.map(({ _id, name, location }) => (
-            <tr key={_id}>
-              <td>{name}</td>
-              <td>{location}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="schools-list">
+      {schools && schools.map(({ _id, name, location, image }) => (
+        <div key={_id} className="school-card">
+          <img src={image} alt={name} className="school-logo" />
+          <div className="school-info">
+            <h2 className="school-name">{name}</h2>
+            <p className="school-location">{location}</p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

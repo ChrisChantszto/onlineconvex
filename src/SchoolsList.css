@@ -1,0 +1,39 @@
+.schools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .school-card {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 240px; /* You can adjust the width as needed */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .school-logo {
+    width: 100%; /* Ensure the image spans the full width of the card */
+    height: 150px; /* Set a fixed height for the logo */
+    object-fit: contain; /* Make sure the entire logo is visible, maintaining aspect ratio */
+    object-position: center; /* Center the logo within the element's box */
+  }
+  
+  .school-info {
+    padding: 15px;
+  }
+  
+  .school-name {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  }
+  
+  .school-location {
+    font-size: 1em;
+    color: #666;
+  }

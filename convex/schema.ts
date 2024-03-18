@@ -9,6 +9,7 @@ export default defineSchema({
     schools: defineTable({
         name: v.string(), // The name of the school
         location: v.string(),
+        image: v.optional(v.string()),
         // You can add more fields here as needed
     }),
 
@@ -27,12 +28,13 @@ export default defineSchema({
         cost: v.number(),
         duration: v.number(),
         // Additional fields can be added here
-    }),
+    }).index("school", ["schoolId"]),
 
     programmeReviews: defineTable({
         programmeId: v.id('programmes'), // A reference to the programmes table
         reviewerId: v.string(), // The ID of the reviewer (again, could be a reference)
         rating: v.number(), // The numeric rating for the programme
+        difficulity: v.number(),
         reviewText: v.string(), // The text of the review
         // Any other fields you need
     }),

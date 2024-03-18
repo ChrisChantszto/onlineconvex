@@ -10,6 +10,7 @@ function ProgramList() {
       <table>
         <thead>
           <tr>
+            <th>School Name</th>
             <th>Name</th>
             <th>Description</th>
             <th>Cost ($)</th>
@@ -17,8 +18,9 @@ function ProgramList() {
           </tr>
         </thead>
         <tbody>
-          {programmes && programmes.map(({ _id, name, description, cost, duration }) => (
+          {programmes && programmes.map(({ _id, schoolName, name, description, cost, duration }) => (
             <tr key={_id}>
+              <td>{schoolName}</td>
               <td>{name}</td>
               <td>{description}</td>
               <td>{cost}</td>
