@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import "./ReviewsForm.css";
 import "./App.css";
+import { v4 as uuidv4 } from 'uuid';
 
 function ReviewsForm() {
   const programmes = useQuery(api.programmes.get);
@@ -12,11 +13,26 @@ function ReviewsForm() {
   const [workload, setWorkload] = useState(12);
   const [reviewText, setReviewText] = useState("");
 
-  const handleSubmit = (event) => {
+  const submitReview = useMutation(api.programmeReviews.submitReview);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Assuming you have a function to submit the review to the database
-    // submitReview({ selectedProgram, rating, difficulty, workload, reviewText });
-    console.log({ selectedProgram, rating, difficulty, workload, reviewText });
+    try {
+
+      const reviewerId = uuidv4();
+
+      await submitReview({
+        difficulty: difficulty,
+        programmeId: selectedProgram,
+        rating: rating,
+        reviewText: reviewText,
+        reviewerId: reviewerId,
+      });
+      console.log("Review submitted successfully");
+      // Optionally, clear the form or navigate the user elsewhere
+    } catch (error) {
+      console.error("Failed to submit review:", error);
+    }
   };
 
   return (

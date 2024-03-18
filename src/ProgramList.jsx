@@ -1,6 +1,7 @@
 import "./App.css";
 import { useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
+import { Link } from "react-router-dom";
 
 function ProgramList() {
   const programmes = useQuery(api.programmes.get);
@@ -15,6 +16,7 @@ function ProgramList() {
             <th>Description</th>
             <th>Cost ($)</th>
             <th>Duration (Months)</th>
+            <th>Reviews</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +27,11 @@ function ProgramList() {
               <td>{description}</td>
               <td>{cost}</td>
               <td>{duration}</td>
+              <td>
+                <Link to={`/program/${encodeURIComponent(_id)}/reviews`}>
+                  View Reviews
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

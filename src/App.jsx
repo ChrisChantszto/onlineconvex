@@ -6,6 +6,7 @@ import Footer from './Footer';
 import ProgramList from './ProgramList';
 import ReviewsForm from "./ReviewsForm";
 import SchoolsList from "./SchoolsList";
+import ProgrammeReviews from "./ProgrammeReviews";
 
 // Import Routes and Route from react-router-dom (Switch is replaced by Routes)
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
             {/* Update Route components with the new element prop */}
             <Route exact path="/" element={<SchoolsList />} />
             <Route path="/programs" element={<ProgramList />} />
+            <Route path="/program/:programmeId/reviews" element={<ProgrammeReviews />} />
             <Route path="/reviews" element={<div>Reviews Page Under Construction</div>} />
             <Route path="/add-review" element={<ReviewsForm />} />
           </Routes>

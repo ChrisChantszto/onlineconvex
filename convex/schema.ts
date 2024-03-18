@@ -34,7 +34,7 @@ export default defineSchema({
         programmeId: v.id('programmes'), // A reference to the programmes table
         reviewerId: v.string(), // The ID of the reviewer (again, could be a reference)
         rating: v.number(), // The numeric rating for the programme
-        difficulity: v.number(),
+        difficulty: v.number(),
         reviewText: v.string(), // The text of the review
         // Any other fields you need
     }),
